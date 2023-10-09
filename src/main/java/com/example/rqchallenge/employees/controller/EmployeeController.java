@@ -1,5 +1,7 @@
-package com.example.rqchallenge.employees;
+package com.example.rqchallenge.employees.controller;
 
+import com.example.rqchallenge.employees.entity.Data;
+import com.example.rqchallenge.employees.entity.Employee;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,8 +9,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@RestController
-public interface IEmployeeController {
+@RequestMapping
+public interface EmployeeController {
+
+
 
     @GetMapping()
     ResponseEntity<List<Employee>> getAllEmployees() throws IOException;
@@ -26,9 +30,9 @@ public interface IEmployeeController {
     ResponseEntity<List<String>> getTopTenHighestEarningEmployeeNames();
 
     @PostMapping()
-    ResponseEntity<Employee> createEmployee(@RequestBody Map<String, Object> employeeInput);
+    ResponseEntity<String> createEmployee(@RequestBody Map<String, Object> employeeInput);
 
     @DeleteMapping("/{id}")
-    ResponseEntity<String> deleteEmployeeById(@PathVariable String id);
+    ResponseEntity<String> deleteEmployeeById(@PathVariable String id) throws InterruptedException;
 
 }
